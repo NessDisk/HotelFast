@@ -1,1 +1,1 @@
-# hotelFast
+# HotelFast
