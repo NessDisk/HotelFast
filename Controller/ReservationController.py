@@ -8,40 +8,40 @@ router = APIRouter()
 
 @router.get('')
 def get(db: Session = Depends(get_db)):
-        allRoom = RoomService.Get(db)
-    return allRoom
+        allRoom = ReservationService.Get(db)
+        return allRoom
 
 
 @router.get('/{id}')
 def getByID( id: int ,db: Session = Depends(get_db)):
-        room = RoomService.GetById(id, db)     
+        room = ReservationService.GetById(id, db)     
         return room
 
 
 @router.post('/')
-def Post( roomSchema: RoomSchema = Body(...),
+def Post( reservationSchema: ReservationSchema = Body(...),
           db: Session = Depends(get_db)):
     try:       
-        newRoom = RoomService.Add(roomSchema, db)
-        return newRoom
+        newRoom = ReservationService.Add(reservationSchema, db)
+        return  newRoom
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.put('/')
-def put( roomUpdate: RoomSchema = Body(...),
+def put( reservationUpdate: ReservationSchema = Body(...),
          db: Session = Depends(get_db)):
         try:      
-                roomResult = RoomService.Update(roomUpdate, db) 
-                return roomResult
+                reservationResult = ReservationService.Update(reservationUpdate, db) 
+                return reservationResult
         except ValueError as e:
             raise HTTPException(status_code=400, detail=str(e))
         
 @router.delete('/{id}')
 def Delete( id:int,
-            db: Session = Depends(get_db)):  
+           db: Session = Depends(get_db)):  
         try:       
-            RoomService.Delete(id, db) 
+            ReservationService.Delete(id, db) 
             return "Delete complete"
         except ValueError as e:
             raise HTTPException(status_code=400, detail=str(e))

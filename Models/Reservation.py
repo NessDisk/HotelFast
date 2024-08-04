@@ -6,9 +6,9 @@ class Reservation(Base):
     __tablename__ = "reservations"
 
     id = Column(Integer, primary_key=True, index=True)
-    customerName = Column(String)
-    startDate = Column(Date)
-    endDate = Column(Date)
-    roomId = Column(Integer, ForeignKey("rooms.id"))
-
+    customerName = Column(String, nullable=False)
+    startDate = Column(Date, nullable=False)
+    endDate = Column(Date, nullable=False)
+    roomId = Column(Integer, ForeignKey("rooms.id"), nullable=False)
+    
     room = relationship("Room", back_populates="reservations")

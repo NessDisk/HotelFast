@@ -7,4 +7,4 @@ class Room(BaseModel):
         numRoom: int
         type: Literal['simple', 'doble', 'suite']
         priceByNight: float
-        isAvaible:bool 
+        isAvailable:bool 

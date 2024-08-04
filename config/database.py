@@ -20,3 +20,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def init_db():
+    from Models import Room, Reservation 
+    # Base.metadata.create_all(bind=engine)
