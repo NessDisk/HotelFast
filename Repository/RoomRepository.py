@@ -9,7 +9,7 @@ def Get(db: Session ):
 
 def GetById(id:int ,db: Session ):
      return  db.query(RoomModel).filter(RoomModel.id == id).first()
-           
+
 def Add(room: RoomRespository, db: Session ):
     newRoom = RoomModel(**room.dict())
     db.add(newRoom)

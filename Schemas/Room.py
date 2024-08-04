@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import Literal, Optional
 
 class Room(BaseModel):
-        id:  Optional[int] =None
+        id:  Optional[int] =0
         numRoom: int
         type: Literal['simple', 'doble', 'suite']
         priceByNight: float
-        isAvailable:bool 
+        enable:bool 

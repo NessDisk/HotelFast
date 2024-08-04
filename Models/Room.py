@@ -9,6 +9,6 @@ class Room(Base):
     numRoom = Column(String, unique=True, index=True, nullable=False)
     type = Column(String, nullable=False)
     priceByNight = Column(Float, nullable=False)
-    isAvailable = Column(Boolean, default=True)
+    enable = Column(Boolean, default=True)
 
     reservations = relationship("Reservation", back_populates="room")

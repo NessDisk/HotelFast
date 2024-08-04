@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional
 
 class Reservations(BaseModel):
-        id:  Optional[int] =None
+        id:  Optional[int] =0
         customerName: str
         startDate: datetime
         endDate: datetime

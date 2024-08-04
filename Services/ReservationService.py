@@ -20,12 +20,12 @@ def Add(reservation: reservationSchema, db: Session):
     if room is None:
         raise ValueError(status_code=404, detail="roomId don't exist in the Database")
     
-    if not room.isAvailable:
+    if not room.enable:
         raise ValueError("Room is not available")
 
     # Validate date 
     isAvailable = ReservationRepository.ValidateDateReservation(reservation, db)
-    if isAvailable is False:
+    if not isAvailable:
         raise HTTPException(status_code=404, detail="Reservation is not available in that Date, change the dates")
     
     # validate if the available before to make a Reservation
